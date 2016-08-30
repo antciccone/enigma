@@ -1,11 +1,8 @@
 require_relative 'offset'
 require_relative 'key'
-require_relative 'encrypt'
-require 'pry'
+require_relative 'encipher'
 
-
-
-class Encipher
+class Decrypting
   attr_reader :key,
               :key_and_offset_value,
               :a,
@@ -20,17 +17,6 @@ class Encipher
   @characters = (' '..'z').to_a
   @rotation = []
   end
-
-  def key_strings
-  key = @key
-  key_values  = key.chars
-  end
-
-  def offset_to_array
-  off_set = @offset
-  off_set_value = off_set.chars
-  end
-
   def set_rotations(keys, offset)
     keys_a = keys.to_s.chars.map(&:to_i)
     offset_a = offset.to_s.chars.map(&:to_i)
@@ -39,18 +25,17 @@ class Encipher
   @b = keys_a[1..2].join.to_i + offset_a[1].to_i
   @c = keys_a[2..3].join.to_i + offset_a[2].to_i
   @d = keys_a[3..4].join.to_i + offset_a[3].to_i
-  return a
+  return b
   end
 
-  def encrypt_letter(letter, rotation)
+  def decrypting_letter(letter, rotation)
     mutated_characters = characters.rotate(rotation)
     dictionary = Hash[@characters.zip(mutated_characters)]
-    dictionary[letter]
-    binding.pry
+    dictionary.key(letter)
   end
 
-  def encrypt(message)
-  encrypted_output = message.chars.map.with_index do |char, index|
+  def decrypt(message)
+    decrypt_output = message.chars.map.with_index do |char, index|
     if index % 4 == 0
       rotation = a
     elsif index % 4 == 1
@@ -60,9 +45,8 @@ class Encipher
     else
       rotation = d
     end
-  encrypt_letter(char, rotation)
-  binding.pry
+    decrypting_letter(char, rotation)
     end
-  encrypted_output.join
+    decrypt_output.join
   end
 end
