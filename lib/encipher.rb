@@ -1,9 +1,6 @@
 require_relative 'offset'
 require_relative 'key'
-require_relative 'encrypt'
 require 'pry'
-
-
 
 class Encipher
   attr_reader :key,
@@ -18,7 +15,6 @@ class Encipher
   @key    =  Key.new.random_key
   @offset = Offset.new.date_number
   @characters = (' '..'z').to_a
-  @rotation = []
   end
 
   def key_strings
@@ -46,7 +42,6 @@ class Encipher
     mutated_characters = characters.rotate(rotation)
     dictionary = Hash[@characters.zip(mutated_characters)]
     dictionary[letter]
-    binding.pry
   end
 
   def encrypt(message)
@@ -61,7 +56,6 @@ class Encipher
       rotation = d
     end
   encrypt_letter(char, rotation)
-  binding.pry
     end
   encrypted_output.join
   end

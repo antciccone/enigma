@@ -1,4 +1,4 @@
-require "./lib/encipher"
+require './lib/encipher'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
@@ -49,6 +49,12 @@ class EncipherTest < Minitest::Test
 
 
     assert_equal 17, enigma.set_rotations(12765, 5565)
+  end
+
+  def test_encrypt_with_blank_string
+    enigma = Encipher.new
+
+    assert_equal nil, enigma.encrypt_letter("", 10)
   end
 
   def test_encrypt_one_letter

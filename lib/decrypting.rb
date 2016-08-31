@@ -15,8 +15,8 @@ class Decrypting
   @key    =  Key.new.random_key
   @offset = Offset.new.date_number
   @characters = (' '..'z').to_a
-  @rotation = []
   end
+
   def set_rotations(keys, offset)
     keys_a = keys.to_s.chars.map(&:to_i)
     offset_a = offset.to_s.chars.map(&:to_i)
