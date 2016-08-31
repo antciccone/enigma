@@ -8,6 +8,7 @@ class EnigmaTest < Minitest::Test
 
   def test_initializing_encipher_class
    a = Enigma.new
+   a.encipher
    assert_equal "903482"
  end
 end

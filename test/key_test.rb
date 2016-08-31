@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require "./lib/key"
 require 'minitest/autorun'
 require 'minitest/pride'
