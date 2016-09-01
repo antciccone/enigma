@@ -14,7 +14,7 @@ class EncipherTest < Minitest::Test
 
   def test_the_length_of_generated_key
     a = Encipher.new
-
+    
     assert_equal 5, a.key.length
   end
 

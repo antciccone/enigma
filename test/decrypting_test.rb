@@ -16,7 +16,12 @@ class DecryptingTest < Minitest::Test
     enigma = Decrypting.new
 
 
-    assert_equal 32, enigma.set_rotations(12765, 5565)
+    assert_equal 17, enigma.set_rotations(12765, 5565)[0]
+    assert_equal 32, enigma.set_rotations(12765, 5565)[1]
+    assert_equal 82, enigma.set_rotations(12765, 5565)[2]
+    assert_equal 70, enigma.set_rotations(12765, 5565)[3]
+
+
   end
 
   def test_decrypt_letter_one_letter

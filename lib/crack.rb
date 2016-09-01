@@ -13,7 +13,7 @@ class Crack
   def crack(message)
     99999.times do |i|
       @e.decrypt(message)
-      return i if e[-7..-1] == "..end.."
+      return i if [-7..-1] == "..end.."
 
     end
   end

@@ -25,7 +25,7 @@ class Decrypting
   @b = keys_a[1..2].join.to_i + offset_a[1].to_i
   @c = keys_a[2..3].join.to_i + offset_a[2].to_i
   @d = keys_a[3..4].join.to_i + offset_a[3].to_i
-  return b
+  return [@a,@b,@c,@d]
   end
 
   def decrypting_letter(letter, rotation)

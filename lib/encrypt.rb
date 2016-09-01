@@ -1,8 +1,12 @@
+require './lib/encipher'
 
-require 'pry'
-handle = File.read(ARGV[0]).chomp
+read_from = ARGV[0]
+encrypt_to = ARGV[1]
 
-e = Enigma.new
-encrypted_string = e.encrypt(handle)
+input = File.read(read_from)
 
-File.write(ARGV[1], encrypted_string)
+e = Encipher.new
+
+encrypted_text = e.encrypt(input)
+
+output = File.write(encrypt_to, encrypted_text)
